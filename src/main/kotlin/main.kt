@@ -11,13 +11,3 @@ fun main() {
     emp3.calculate(35.0);
 
 }
-
-fun goDirection(dir: Compass): String{
-    when (dir){
-        Compass.NORTH -> return "North"
-        Compass.SOUTH -> return "South"
-        Compass.EAST -> return "East"
-        Compass.WEST -> return "West"
-        else -> return "Go Nowhere"
-    }
-}
