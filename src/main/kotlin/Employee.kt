@@ -7,6 +7,7 @@ class Employee(var name: String,
                var shift: Int
                ) {
     var total = 0.0
+    private val twoDigits = DecimalFormat("$#,###.00")
 
     init {
 
@@ -15,29 +16,36 @@ class Employee(var name: String,
     fun calculate(hoursIn: Double) {
         var overtime = 0.0
         var hours = hoursIn
+        var rate = payRate
+        if(shift == 3)
+            rate = 1.1 * payRate
+        else if(shift == 2)
+            rate = 1.05 * payRate
+
         total = 0.0
 
         if (!salary && (hoursIn > 40)) {
             overtime = hoursIn - 40
             hours = 40.0
-            total += overtime * 1.5 * payRate
+            total += overtime.toDouble() * 1.5 * rate
         }
 
-        if(shift == 3)
-            total += 1.1 * payRate * hours
-        else if(shift == 2)
-            total += 1.05 * payRate * hours
+        total += rate * (hours.toDouble())
+
+        println("$name earned ${twoDigits.format(total)} this week")
+
+
     }
 
     fun display() {
         var display = ""
-        display += name
-        display += " earned "
 
-        val twoDigits = DecimalFormat("$#,###.00")
-        display += twoDigits.format(total)
+        display += "$name\n"
+        display += "${position.shortName}\n"
+        display += "Is salary: $salary\n"
+        display += "Shift: $shift\n"
+        display += "Rate of pay is: ${twoDigits.format(payRate)} per hour"
 
-        display += " this week"
         println(display)
     }
 }

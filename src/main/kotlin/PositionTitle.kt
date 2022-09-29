@@ -1,8 +1,8 @@
-enum class PositionTitle {
-    ADMINISTRATION,
-    PRODUCTION,
-    SALES,
-    MAINTENANCE,
-    TECHNICAL,
-    SECRETARIAL;
+enum class PositionTitle(var shortName: String) {
+    ADMINISTRATION("Administration"),
+    PRODUCTION("Production"),
+    SALES("Sales"),
+    MAINTENANCE("Maintenance"),
+    TECHNICAL("Technical"),
+    SECRETARIAL("Secretarial");
 }
